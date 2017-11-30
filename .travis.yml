@@ -22,9 +22,6 @@ before_script:
   - cd build
   - cmake ..
 
-script:
-  - make
-
 addons:
   coverity_scan:
     project:
@@ -34,6 +31,9 @@ addons:
     build_command_prepend: "mkdir -p build; cd build; cmake .."
     build_command: "make"
     branch_pattern: master
+
+script:
+  - make
 
 notification:
   email: false
