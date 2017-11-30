@@ -33,7 +33,7 @@ addons:
     branch_pattern: master
 
 script:
-  - make
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
 
 notification:
   email: false
