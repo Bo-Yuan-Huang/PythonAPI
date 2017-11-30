@@ -11,7 +11,7 @@ int IncrementNode(const int &val) {
   container.IncrementVal();
   int output = container.GetVal();
 
-  std::cout << output << std::endl;
+  std::cout << "C api print " << output << std::endl;
 
   return output;
 }

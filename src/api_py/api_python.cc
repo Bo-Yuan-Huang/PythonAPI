@@ -4,7 +4,7 @@
 #include "api_top.h"
 #include <boost/python.hpp>
 
-BOOST_PYTHON_MODULE(simple_api_python) {
+BOOST_PYTHON_MODULE(libsimple_api_python) {
   boost::python::def("IncrementNode", IncrementNode);
 }
 
