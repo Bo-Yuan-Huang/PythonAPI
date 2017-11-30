@@ -10,6 +10,7 @@ Node::~Node() {}
 
 void Node::SetVal(const int &val) { val_ = val; }
 
-const int &Node::GetVal() const { return val_; }
+int Node::GetVal() const { return val_; }
+// const int &Node::GetVal() const { return val_; }
 
 void Node::IncrementVal() { val_++; }

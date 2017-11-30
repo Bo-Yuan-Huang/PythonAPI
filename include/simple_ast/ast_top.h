@@ -9,7 +9,8 @@ public:
   Node();
   ~Node();
   void SetVal(const int &val);
-  const int &GetVal() const;
+  int GetVal() const;
+  // const int &GetVal() const;
   void IncrementVal();
 
 private:
