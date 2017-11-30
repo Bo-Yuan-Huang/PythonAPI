@@ -30,7 +30,7 @@ addons:
     notification_email: byhuang1992@gmail.com
     build_command_prepend: "mkdir -p build; cd build; cmake .."
     build_command: "make"
-    branch_pattern: master
+    branch_pattern: coverity_scan
 
 script:
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
