@@ -24,7 +24,9 @@ addons:
 
 before_install:
   # coverity
-  #- echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+  # coveralls
+  - pip install --user cpp-coveralls
   # set up toolchain
   - sudo apt-get -qq --yes update
 
@@ -40,6 +42,9 @@ before_script:
 
 script:
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
+
+after_success:
+  - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
 
 notification:
   email: false
