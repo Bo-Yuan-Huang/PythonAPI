@@ -4,8 +4,12 @@ os:
   - linux
 
 env:
+  global:
+    - secure: "U9H50avEa2dqmllCqNnLC89qocQMQy7vicZW53uVsHB2TP0bBIS34Z/+Nw0Gtvj+4wToFO09r5lJPYI6dsx1/x/igT4QgsnWxvW4ZsbiT0n/FLVIzVzUYA+2GSRS9sfiGE8kSD7Z/wWxt1IioRzFkt/13OM4G8li1lOQHWfbyO1JondUBacbwG3UrEpv7If2eyXVWK+dWKv/g7Ov4BbAu1N4MwKCRXWfIKM3EvH0xxKlun+DO+S+aHA/plGYkcUDeSiiz/WfYnxieQVt/WkCU8n2acU+fWZG/Uf36S35G61wKxym+9dnjOSsmaXHCEZMbEnyJlCBb3E3mN+YOBWKGwMEYfmeNBTs+tG6HkrERossNXVofGxB5ztvIxnFgz2QgBOX/1wBVcQR2Thg0wkV6IrHhloIAtYA5f7YkbIIY0+57CaGfWvo0PwOqin1pp01velSSA+JicxxnIY4UH/MQl80w2QEg3nlkq8mt/Ha1JMIMrXQVNUyfRmJ+muKijpMpqDhWHYt5R0cv+vluoTGcF+bn9fEH2w4Mklp7Qqc+VfOcuxZf8b3S3vOPavGsBlgyL1IPbX8tRXEDfwCLHNv+zatGcgTEy1o1kJwi6YadwaVOx2rD9rPtRGRHJcGmKizbLR2BeaR59XcgcV7wHaEj34NKciROdrHtTOkBKyDrtg="
 
 before_install:
+  # coverity
+  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
   # set up toolchain
   - sudo apt-get -qq --yes update
 
@@ -20,6 +24,16 @@ before_script:
 
 script:
   - make
+
+addons:
+  coverity_scan:
+    project:
+      name: "Bo-Yuan-Huang/SimpleAPI"
+      description: "<Your project description here>"
+    notification_email: byhuang1992@gmail.com
+    build_command_prepend: "mkdir -p build; cd build; cmake .."
+    build_command: "make"
+    branch_pattern: master
 
 notification:
   email: false
