@@ -24,7 +24,7 @@ set (CMAKE_FIND_LIBRARY_SUFFIXES ".so" ${CMAKE_FIND_LIBRARY_SUFFIXES})
 set (BUILD_SHARED_LIBS ON)
 
 # use boost python to create python api
-option (BUILD_PYTHON_API "Use Boost to build Python API" OFF)
+option (BUILD_PYTHON_API "Use Boost to build Python API" ON)
 
 if (BUILD_PYTHON_API)
   add_definitions ("-DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT")

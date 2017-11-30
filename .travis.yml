@@ -1,0 +1,25 @@
+language: cpp
+
+os:
+  - linux
+
+env:
+
+before_install:
+  # set up toolchain
+  - sudo apt-get -qq --yes update
+
+install:
+  - sudo apt-get install --yes -qq cmake cmake-data
+  - sudo apt-get install --yes -qq libboost-all-dev
+
+before_script:
+  - mkdir build
+  - cd build
+  - cmake ..
+
+script:
+  - make
+
+notification:
+  email: false
