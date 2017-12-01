@@ -46,7 +46,7 @@ script:
 
 after_success:
   - make test
-  - coveralls --exclude lib --exclude test --exclude src --exclude CMakeFiles --gcov-options '\-lp'
+  - coveralls --exclude lib --exclude CMakeFiles --exclude test --gcov-options '\-lp'
 
 notification:
   email: false
