@@ -4,6 +4,10 @@ cmake_minimum_required (VERSION 2.6)
 # project name
 project (simple_api)
 
+# enable testing
+include (CTest)
+enable_testing ()
+
 # compile type
 set (CMAKE_BUILD_TYPE Debug)
 add_definitions ("-std=c++11 -fPIC")
@@ -63,3 +67,4 @@ set (LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/lib")
 include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 add_subdirectory (src)
+add_subdirectory (test)
